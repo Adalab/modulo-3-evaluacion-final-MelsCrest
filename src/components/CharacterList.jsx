@@ -1,7 +1,10 @@
+import CharacterCard from './CharacterCard'
 
 function CharacterList() {
   return (
-    <div>CharacterList</div>
+    <>
+      <CharacterCard/>
+    </>
   )
 }
 

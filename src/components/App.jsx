@@ -1,14 +1,27 @@
+import { Route, Routes } from 'react-router-dom';
 import '../styles/App.scss'; 
 import Header from './Header';
+import Filters from './Filters.jsx/Filters';
+import CharacterList from './CharacterList';
+import CharacterDetail from './CharacterDetail';
 
 
 function App() { 
   return (
     <>
-    <Header/>
-      <div>
-        <h1>Template react</h1>
-      </div>
+      <Header/>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Filters/>
+            <CharacterList/>
+          </>
+        }/>
+        {/* Ruta para detail */}
+        {/* <CharacterDetail/> */}
+        {/* Ruta para not found */}
+      </Routes>
+      
     </>
   );
 }

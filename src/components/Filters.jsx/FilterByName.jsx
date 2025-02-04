@@ -1,7 +1,10 @@
 
 function FilterByName() {
   return (
-    <div>FilterByName</div>
+    <>
+      <label>Busca por personaje: </label>
+      <input type="text"/>
+    </>
   )
 }
 

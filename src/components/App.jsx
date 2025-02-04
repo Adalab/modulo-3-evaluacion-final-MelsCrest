@@ -3,7 +3,9 @@ import '../styles/App.scss';
 import Header from './Header';
 import Filters from './Filters.jsx/Filters';
 import CharacterList from './CharacterList';
-import CharacterDetail from './CharacterDetail';
+// import CharacterDetail from './CharacterDetail';
+
+// const [characteres, setCharacteres] = useState([])
 
 
 function App() { 

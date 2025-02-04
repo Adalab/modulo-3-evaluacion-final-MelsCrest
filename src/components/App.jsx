@@ -13,7 +13,7 @@ function App() {
 
   useEffect(()=>{
     api().then((data)=>{setCharacteres(data)})
-  })
+  }, [])
 
   return (
     <>
@@ -22,7 +22,7 @@ function App() {
         <Route path="/" element={
           <>
             <Filters/>
-            <CharacterList/>
+            <CharacterList data={characteres}/>
           </>
         }/>
         {/* Ruta para detail */}

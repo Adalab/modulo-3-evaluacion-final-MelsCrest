@@ -3,12 +3,18 @@ import '../styles/App.scss';
 import Header from './Header';
 import Filters from './Filters.jsx/Filters';
 import CharacterList from './CharacterList';
+import { useEffect, useState } from 'react';
+import api from '../services/api';
 // import CharacterDetail from './CharacterDetail';
 
-// const [characteres, setCharacteres] = useState([])
-
-
 function App() { 
+
+  const [characteres, setCharacteres] = useState([]);
+
+  useEffect(()=>{
+    api().then((data)=>{setCharacteres(data)})
+  })
+
   return (
     <>
       <Header/>

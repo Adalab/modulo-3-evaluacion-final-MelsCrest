@@ -3,10 +3,33 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import '../styles/CharacterDetail.scss';
 import defaultImg from '../images/img-default.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeartPulse } from '@fortawesome/free-solid-svg-icons';
+import { faSkull } from '@fortawesome/free-solid-svg-icons';
+import GryffindorIcon from '../images/gryffindor.svg';
+import HufflepuffIcon from '../images/hufflepuff.svg';
+import RavenclawIcon from '../images/ravenclaw.svg';
+import SlytherinIcon from '../images/slytherin.svg';
+
 
 function CharacterDetail({getInfo}) {
   const {idCharacter} = useParams();
   const data = getInfo(idCharacter);
+
+  // const getIconHouse(house) => {
+  //   switch(house){
+  //     case 'Gryffindor' : 
+  //       return <img src={GryffindorIcon} alt="Icono Gryffindor" />;
+  //     case 'Hufflepuff' :
+  //       return <img src={HufflepuffIcon} alt="Icono Hufflepuff" />;
+  //     case 'Ravenclaw' :
+  //       return <img src={RavenclawIcon} alt="Icono Ravenclaw" />;
+  //     case 'Slytherin' :
+  //       return <img src={SlytherinIcon} alt="Icono Slytherin" />;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   return (
     <>
@@ -22,13 +45,22 @@ function CharacterDetail({getInfo}) {
           </ul> : '' }
           
           <p>Especie: {data.species}</p>
-          <p>Estatus: {data.alive ? 'vivo' : 'muerto'}</p>
+          <p>Estatus: {data.alive ? (
+              <>
+                vivo <FontAwesomeIcon icon={faHeartPulse} />
+              </>
+            ):(
+              <>
+                muerto <FontAwesomeIcon icon={faSkull} />
+              </>
+            )}
+          </p>
           <p>Género: {data.gender}</p>
-          <p>Casa: {data.house}</p>
+          <p>Casa: {data.house} {/* {getIconHouse(data.house)} */}</p>
         </article>
         : <p>Personaje no encontrado</p>
         }
-        
+        {/* Hogwarts Legacy Slytherin icono de Icons8 */}
       </div>
     </>
   )

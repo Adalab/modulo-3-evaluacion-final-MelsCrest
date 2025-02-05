@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function FilterByName({setFilterName}) {
+function FilterByName({setFilterName, filterName}) {
 
   const handleInput = (ev) => {
     setFilterName(ev.target.value.toLowerCase())
@@ -9,13 +9,14 @@ function FilterByName({setFilterName}) {
   return (
     <>
       <label>Busca por personaje: </label>
-      <input type="text" onChange={handleInput} />
+      <input type="text" onChange={handleInput} value={filterName !== ''? filterName : ''}/>
     </>
   )
 }
 
 FilterByName.propTypes = {
-  setFilterName : PropTypes.func
+  setFilterName : PropTypes.func,
+  filterName : PropTypes.string
 }
 
 export default FilterByName

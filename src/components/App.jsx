@@ -18,20 +18,24 @@ function App() {
   }, []);
 
   
-
   //Filtros: nombre y casa
   const filtersCharacteres = characteres
   .filter((character) => character.name.toLowerCase().includes(filterName))
   .filter((character) => filterHouse ? character.house === filterHouse : character.house === 'Gryffindor');
   
-  //obtener informacion para enviar a CharacterDetail
+  //Ordenar por nombre los personajes
+  filtersCharacteres.sort((a, b) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  });
+  
+  //Obtener informacion para enviar a CharacterDetail
   const getInfo = (idCharacter) => {
     const characterFound = characteres.find((character)=>character.id === idCharacter);
     
     return characterFound;
   }
-
-  //validar
 
   return (
     <>
@@ -39,7 +43,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
-            <Filters setFilterName={setFilterName} setFilterHouse={setFilterHouse}/>
+            <Filters setFilterName={setFilterName} setFilterHouse={setFilterHouse} filterName={filterName} filterHouse={filterHouse}/>
             <CharacterList data={filtersCharacteres}/>
           </>
         }/>

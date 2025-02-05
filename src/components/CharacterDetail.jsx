@@ -16,14 +16,15 @@ function CharacterDetail({getInfo}) {
       <div>
         {data ? <article>
           <img src={data.img !== '' ? data.img : defaultImg} alt="foto de personaje de Harry Potter" className="detail_img"/> 
-          <h3>{data.name}</h3>
-          <ul>
+          <h3>Nombre: {data.name}</h3>
+          {data.otherName.length > 0 ? <ul>Otros nombres:
             {data.otherName.map((name, i) => <li key={i}>{name}</li>)}            
-          </ul> 
-          <p>{data.species}</p>
-          <p>{data.alive}</p>
-          <p>{data.gender}</p>
-          <p>{data.house}</p>
+          </ul> : '' }
+          
+          <p>Especie: {data.species}</p>
+          <p>Estatus: {data.alive ? 'vivo' : 'muerto'}</p>
+          <p>Género: {data.gender}</p>
+          <p>Casa: {data.house}</p>
         </article>
         : <p>Personaje no encontrado</p>
         }

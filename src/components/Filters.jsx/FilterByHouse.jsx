@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function FilterByHouse({setFilterHouse}) {
+function FilterByHouse({setFilterHouse, filterHouse}) {
 
   const handleChange = (ev) => {
     setFilterHouse(ev.target.value)
@@ -10,7 +10,7 @@ function FilterByHouse({setFilterHouse}) {
     <>
       <section>
         <label>Selecciona la casa: </label>
-        <select onChange={handleChange}>
+        <select onChange={handleChange} value={filterHouse !== 'Gryffindor' ? filterHouse : 'Gryffindor'}>
           <option value="Gryffindor">Gryffindor</option>
           <option value="Hufflepuff">Hufflepuff</option>
           <option value="Ravenclaw">Ravenclaw</option>
@@ -22,7 +22,8 @@ function FilterByHouse({setFilterHouse}) {
 }
 
 FilterByHouse.propTypes = {
-  setFilterHouse : PropTypes.func
+  setFilterHouse : PropTypes.func,
+  filterHouse : PropTypes.string
 }
 
 export default FilterByHouse

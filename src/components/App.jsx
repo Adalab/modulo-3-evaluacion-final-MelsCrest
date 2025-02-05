@@ -5,7 +5,7 @@ import Filters from './Filters.jsx/Filters';
 import CharacterList from './CharacterList';
 import { useEffect, useState } from 'react';
 import api from '../services/api';
-// import CharacterDetail from './CharacterDetail';
+import CharacterDetail from './CharacterDetail';
 
 function App() { 
 
@@ -23,6 +23,12 @@ function App() {
   .filter((character) => character.name.toLowerCase().includes(filterName))
   .filter((character) => filterHouse ? character.house === filterHouse : character.house === 'Gryffindor')
 
+  //obtener informacion para enviar a CharacterDetail
+  const getInfo = (idCharacter) => {
+    const characterFound = characteres.find((character)=>character.id === idCharacter)
+    
+    return characterFound;
+  }
 
   return (
     <>
@@ -34,8 +40,9 @@ function App() {
             <CharacterList data={filtersCharacteres}/>
           </>
         }/>
-        {/* Ruta para detail */}
-        {/* <CharacterDetail/> */}
+        <Route path="/character/:idCharacter" element={
+          <CharacterDetail getInfo={getInfo}/>
+        }/>
         {/* Ruta para not found */}
       </Routes>
       

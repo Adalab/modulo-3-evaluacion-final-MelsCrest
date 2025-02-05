@@ -1,21 +1,35 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import '../styles/CharacterDetail.scss';
+import defaultImg from '../images/img-default.jpg';
 
 function CharacterDetail({getInfo}) {
-  const {idCharacter} = useParams()
-  //idCharacter devuelve el id
+  const {idCharacter} = useParams();
   const data = getInfo(idCharacter);
 
   return (
-    <article>
-      <img src={data.img} alt="foto de personaje de Harry Potter" /> {/* recordar hacer la img por defecto https://i.pinimg.com/736x/29/63/88/296388832b6df6e3396a727e791e51cf.jpg */}
-      <h3>{data.name}</h3>
-      <h4>{data.otherName}</h4> {/* si tiene mostrarlo si no tiene:ocultar esta línea o poner que no tiene */}
-      <p>{data.species}</p>
-      <p>{data.alive}</p>
-      <p>{data.gender}</p>
-      <p>{data.house}</p>
-    </article>
+    <>
+      <div>
+        <Link to="/">Volver</Link>
+      </div>
+      <div>
+        {data ? <article>
+          <img src={data.img !== '' ? data.img : defaultImg} alt="foto de personaje de Harry Potter" className="detail_img"/> 
+          <h3>{data.name}</h3>
+          <ul>
+            {data.otherName.map((name, i) => <li key={i}>{name}</li>)}            
+          </ul> 
+          <p>{data.species}</p>
+          <p>{data.alive}</p>
+          <p>{data.gender}</p>
+          <p>{data.house}</p>
+        </article>
+        : <p>Personaje no encontrado</p>
+        }
+        
+      </div>
+    </>
   )
 }
 

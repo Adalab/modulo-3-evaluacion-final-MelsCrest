@@ -9,7 +9,7 @@ function FilterByName({setFilterName}) {
   return (
     <>
       <label>Busca por personaje: </label>
-      <input type="text" onChange={handleInput}/>
+      <input type="text" onChange={handleInput} />
     </>
   )
 }

@@ -13,22 +13,25 @@ function App() {
   const [filterName, setFilterName] = useState('');
   const [filterHouse, setFilterHouse] = useState('');
 
-
   useEffect(()=>{
     api().then((data)=>{setCharacteres(data)})
-  }, [])
+  }, []);
+
+  
 
   //Filtros: nombre y casa
   const filtersCharacteres = characteres
   .filter((character) => character.name.toLowerCase().includes(filterName))
-  .filter((character) => filterHouse ? character.house === filterHouse : character.house === 'Gryffindor')
-
+  .filter((character) => filterHouse ? character.house === filterHouse : character.house === 'Gryffindor');
+  
   //obtener informacion para enviar a CharacterDetail
   const getInfo = (idCharacter) => {
-    const characterFound = characteres.find((character)=>character.id === idCharacter)
+    const characterFound = characteres.find((character)=>character.id === idCharacter);
     
     return characterFound;
   }
+
+  //validar
 
   return (
     <>
@@ -43,7 +46,9 @@ function App() {
         <Route path="/character/:idCharacter" element={
           <CharacterDetail getInfo={getInfo}/>
         }/>
-        {/* Ruta para not found */}
+        <Route path="*" element={
+          <h2>Ruta no encontrada</h2>
+        }/>
       </Routes>
       
     </>

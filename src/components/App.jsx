@@ -10,10 +10,19 @@ import api from '../services/api';
 function App() { 
 
   const [characteres, setCharacteres] = useState([]);
+  const [filterName, setFilterName] = useState('');
+  const [filterHouse, setFilterHouse] = useState('');
+
 
   useEffect(()=>{
     api().then((data)=>{setCharacteres(data)})
   }, [])
+
+  //Filtros: nombre y casa
+  const filtersCharacteres = characteres
+  .filter((character) => character.name.toLowerCase().includes(filterName))
+  .filter((character) => filterHouse ? character.house === filterHouse : character.house === 'Gryffindor')
+
 
   return (
     <>
@@ -21,8 +30,8 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
-            <Filters/>
-            <CharacterList data={characteres}/>
+            <Filters setFilterName={setFilterName} setFilterHouse={setFilterHouse}/>
+            <CharacterList data={filtersCharacteres}/>
           </>
         }/>
         {/* Ruta para detail */}

@@ -8,7 +8,7 @@ function CharacterList({data}) {
   return (
     <>
       <div className='list'>
-        {data.length === 0 ? <p>No exite el personaje</p> : html}
+        {data.length === 0 ? <p className='notExits'>No exite el personaje</p> : html}
       </div>
     </>
   )

@@ -9,26 +9,46 @@
   padding: 20px;
   margin-top: 15px;
   font-size: 1.3rem;
-    &_link-back{
+  &_link{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    &-back{
       text-decoration: none;
       color: #F9F7F7;
     }
-
-  @media (width>768px) {
-    align-items: flex-end;    
   }
+    
 }
 
 .article{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
   &_img{
-    width: 170px;
+    width: auto;
+    height: auto;
+    &-img{
+      width: 170px;
+    }
+  }
+  &_data{
+    width: auto;
+    height: auto;
+    padding: 10px;  
   }
 }
 .detail_img-house{
   width: 30px;
-  color:#F9F7F7;
 }
 
-// @media (width>768px) {
-        
-// }
+.article_notFound-img{
+  display: flex;
+  flex-direction:column;
+  padding-bottom: 15px;
+  &_notFound-img{
+    width: 170px;
+  }
+}

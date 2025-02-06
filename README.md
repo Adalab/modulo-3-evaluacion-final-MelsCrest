@@ -13,14 +13,11 @@ Las tecnologías y lenguajes usados para la realización de este proyecto han si
 
 ## REQUISITOS
 
-### Diseño
+### Diseño y Maquetación
 Para la ejecución del diseño se ha usado:
-- Sass.
+- Sass y BEM.
 - Flexbox y CSS Grid.
 - Media queries: mobil(320px), tablet(768px) y desktop (1280px).
-
-### Maquetación
-La maquetación cumple los siguientes requisitos:
 
 ### Interacción
 El proyecto cumple con las siguientes interacciones:

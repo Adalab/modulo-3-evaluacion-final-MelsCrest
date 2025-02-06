@@ -6,6 +6,7 @@ import defaultImg from '../images/img-default.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeartPulse } from '@fortawesome/free-solid-svg-icons';
 import { faSkull } from '@fortawesome/free-solid-svg-icons';
+import { faWandSparkles } from '@fortawesome/free-solid-svg-icons';
 import GryffindorIcon from '../images/gryffindor.svg';
 import HufflepuffIcon from '../images/hufflepuff.svg';
 import RavenclawIcon from '../images/ravenclaw.svg';
@@ -33,35 +34,37 @@ function getIconHouse(house){
 
   return (
     <>
-      <div>
-        <Link to="/">Volver</Link>
-      </div>
-      <div>
-        {data ? <article>
-          <img src={data.img !== '' ? data.img : defaultImg} alt="foto de personaje de Harry Potter" className="detail_img"/> 
-          <h3>Nombre: {data.name}</h3>
-          {data.otherName.length > 0 ? <ul>Otros nombres:
-            {data.otherName.map((name, i) => <li key={i}>{name}</li>)}            
-          </ul> : '' }
+      <section className="detail">
+        <div className="detail_link">
+          <Link to="/" className="detail_link-back">Volver</Link>
+        </div>
+        <div className="detail_card">
+          {data ? <article className="article">
+            <img src={data.img !== '' ? data.img : defaultImg} alt="foto de personaje de Harry Potter" className="article_img"/>
+            <h3 className="article_name">Nombre: {data.name}</h3>
+            {data.otherName.length > 0 ? <ul className="article_othernames">Otros nombres:
+              {data.otherName.map((name, i) => <li key={i}><FontAwesomeIcon icon={faWandSparkles} /> {name}</li>)}
+            </ul> : '' }
+        
+            <p className="article_species">Especie: {data.species}</p>
+            <p className="article_alive">Estatus: {data.alive ? (
+                <>
+                  vivo <FontAwesomeIcon icon={faHeartPulse} />
+                </>
+              ):(
+                <>
+                  muerto <FontAwesomeIcon icon={faSkull} />
+                </>
+              )}
+            </p>
+            <p className="article_gender">Género: {data.gender}</p>
+            <p className="article_house">Casa: {data.house} {getIconHouse(data.house)}</p>
+          </article>
+          : <p>Personaje no encontrado</p>
+          }
           
-          <p>Especie: {data.species}</p>
-          <p>Estatus: {data.alive ? (
-              <>
-                vivo <FontAwesomeIcon icon={faHeartPulse} />
-              </>
-            ):(
-              <>
-                muerto <FontAwesomeIcon icon={faSkull} />
-              </>
-            )}
-          </p>
-          <p>Género: {data.gender}</p>
-          <p>Casa: {data.house} {getIconHouse(data.house)}</p>
-        </article>
-        : <p>Personaje no encontrado</p>
-        }
-        {/* Hogwarts Legacy iconos de Icons8 */}
-      </div>
+        </div>
+      </section>
     </>
   )
 }

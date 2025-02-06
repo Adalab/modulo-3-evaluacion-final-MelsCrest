@@ -1,6 +1,34 @@
-.detail_img{
-  width: 100px;
-  &-house{
-    width: 30px;
+.detail{
+  background-color: #A41917;
+  font-family: "Poppins", serif;
+  color: #F9F7F7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px;
+  padding: 20px;
+  margin-top: 15px;
+  font-size: 1.3rem;
+    &_link-back{
+      text-decoration: none;
+      color: #F9F7F7;
+    }
+
+  @media (width>768px) {
+    align-items: flex-end;    
   }
 }
+
+.article{
+  &_img{
+    width: 170px;
+  }
+}
+.detail_img-house{
+  width: 30px;
+  color:#F9F7F7;
+}
+
+// @media (width>768px) {
+        
+// }

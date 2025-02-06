@@ -8,7 +8,7 @@ function FilterByHouse({setFilterHouse, filterHouse}) {
 
   return (
     <>
-      <section>
+      <div>
         <label>Selecciona la casa: </label>
         <select onChange={handleChange} value={filterHouse !== 'Gryffindor' ? filterHouse : 'Gryffindor'}>
           <option value="Gryffindor">Gryffindor</option>
@@ -16,7 +16,7 @@ function FilterByHouse({setFilterHouse, filterHouse}) {
           <option value="Ravenclaw">Ravenclaw</option>
           <option value="Slytherin">Slytherin</option>
         </select>
-      </section>
+      </div>
     </>
   )
 }

@@ -2,6 +2,8 @@ import FilterByName from './FilterByName';
 import FilterByHouse from './FilterByHouse';
 import PropTypes from "prop-types";
 import FilterByGender from './FilterByGender';
+import '../../styles/Filters.scss';
+
 
 function Filters({setFilterName, setFilterHouse, setFilterGender, filterName, filterHouse, filterGender}) {
   const handleForm = (ev)=>{
@@ -16,12 +18,14 @@ function Filters({setFilterName, setFilterHouse, setFilterGender, filterName, fi
 
   return (
     <>
-      <form onSubmit={handleForm}>
-        <FilterByName setFilterName={setFilterName} filterName={filterName}/>
-        <FilterByHouse setFilterHouse={setFilterHouse} filterHouse={filterHouse}/>
-        <FilterByGender setFilterGender={setFilterGender} filterGender={filterGender}/>
-      </form>
-      <button onClick={handleClick}>Reset</button>
+      <section className='filter'>
+        <form onSubmit={handleForm} className='filter_form'>
+          <FilterByName className='filter_form-name' setFilterName={setFilterName} filterName={filterName}/>
+          <FilterByHouse className='filter_form-house' setFilterHouse={setFilterHouse} filterHouse={filterHouse}/>
+          <FilterByGender className='filter_form-gender' setFilterGender={setFilterGender} filterGender={filterGender}/>
+        </form>
+        <button onClick={handleClick} className='filter_button'>Reset</button>
+      </section>
     </>
   )
 }

@@ -1,5 +1,9 @@
 body,
 html {
-    height: 100%;
+    height: auto;
+}
+body{
+    background: rgb(14,15,21);
+    background: linear-gradient(135deg, rgba(14,15,21,1) 36%, rgba(43,45,56,1) 73%, rgba(117,121,146,1) 100%);
 }
 

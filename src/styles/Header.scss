@@ -1,6 +1,19 @@
 .header{
-  height: 200px;
-  background-image: url('../images/harrypotter.jpg');
-  background-size:cover;
-  background-position-y: center;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media (width>768px) {
+    height: 200px;
+  }
+
+  &_logo{
+    height: 150%;
+    object-fit: contain;
+    transform: translateY(-15px);
+    @media (width>768px) {
+      height: 120%;
+    }
+  }
 }

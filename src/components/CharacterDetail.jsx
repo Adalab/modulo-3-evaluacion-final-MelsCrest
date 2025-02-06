@@ -16,20 +16,20 @@ function CharacterDetail({getInfo}) {
   const {idCharacter} = useParams();
   const data = getInfo(idCharacter);
 
-  // const getIconHouse(house) => {
-  //   switch(house){
-  //     case 'Gryffindor' : 
-  //       return <img src={GryffindorIcon} alt="Icono Gryffindor" />;
-  //     case 'Hufflepuff' :
-  //       return <img src={HufflepuffIcon} alt="Icono Hufflepuff" />;
-  //     case 'Ravenclaw' :
-  //       return <img src={RavenclawIcon} alt="Icono Ravenclaw" />;
-  //     case 'Slytherin' :
-  //       return <img src={SlytherinIcon} alt="Icono Slytherin" />;
-  //     default:
-  //       return null;
-  //   }
-  // };
+function getIconHouse(house){
+  switch(house){
+      case 'Gryffindor' : 
+        return <img src={GryffindorIcon} alt="Icono Gryffindor" className="detail_img-house"/>;
+      case 'Hufflepuff' :
+        return <img src={HufflepuffIcon} alt="Icono Hufflepuff" className="detail_img-house"/>;
+      case 'Ravenclaw' :
+        return <img src={RavenclawIcon} alt="Icono Ravenclaw" className="detail_img-house"/>;
+      case 'Slytherin' :
+  return <img src={SlytherinIcon} alt="Icono Slytherin" className="detail_img-house"/>;
+      default:
+        return null;
+  }
+};
 
   return (
     <>
@@ -56,11 +56,11 @@ function CharacterDetail({getInfo}) {
             )}
           </p>
           <p>Género: {data.gender}</p>
-          <p>Casa: {data.house} {/* {getIconHouse(data.house)} */}</p>
+          <p>Casa: {data.house} {getIconHouse(data.house)}</p>
         </article>
         : <p>Personaje no encontrado</p>
         }
-        {/* Hogwarts Legacy Slytherin icono de Icons8 */}
+        {/* Hogwarts Legacy iconos de Icons8 */}
       </div>
     </>
   )

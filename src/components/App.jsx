@@ -12,6 +12,7 @@ function App() {
   const [characteres, setCharacteres] = useState([]);
   const [filterName, setFilterName] = useState('');
   const [filterHouse, setFilterHouse] = useState('');
+  const [filterGender, setFilterGender] = useState('');
 
   useEffect(()=>{
     api().then((data)=>{setCharacteres(data)})
@@ -21,7 +22,8 @@ function App() {
   //Filtros: nombre y casa
   const filtersCharacteres = characteres
   .filter((character) => character.name.toLowerCase().includes(filterName))
-  .filter((character) => filterHouse ? character.house === filterHouse : character.house === 'Gryffindor');
+  .filter((character) => filterHouse ? character.house === filterHouse : character.house === 'Gryffindor')
+  .filter((character) => filterGender ? character.gender === filterGender : true)
   
   //Ordenar por nombre los personajes
   filtersCharacteres.sort((a, b) => {
@@ -43,7 +45,13 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
-            <Filters setFilterName={setFilterName} setFilterHouse={setFilterHouse} filterName={filterName} filterHouse={filterHouse}/>
+            <Filters 
+            setFilterName={setFilterName} 
+            setFilterHouse={setFilterHouse} 
+            setFilterGender={setFilterGender}
+            filterName={filterName} 
+            filterHouse={filterHouse}
+            filterGender={filterGender}/>
             <CharacterList data={filtersCharacteres}/>
           </>
         }/>

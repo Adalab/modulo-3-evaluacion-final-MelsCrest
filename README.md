@@ -1,43 +1,86 @@
-# React + Vite
+# Evaluación final Melisa Cresta
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto consiste en el desarrollo de una página con un listado de personajes de *Harry Potter* que devuelva información sobre los personajes tras realizar una búsqueda. Este forma parte de la evaluación final del **Módulo 3: REACT** de Adalab, donde se evaluan los conocimientos adquiridos durante este módulo.
 
-Currently, two official plugins are available:
+Las tecnologías y lenguajes usados para la realización de este proyecto han sido:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Starter Kit de React**. Creado con **node, vite y react**. Para crear una plantilla del proyecto JSX.
+- **Repositorio git y GitHub**. Para el control de versiones.
+- **Lenguajes HTML y CSS**. HTML para la estructura del proyecto y CSS para la hoja de estilos.
+- **JavaScript y Sintaxis JSX**. Para el desarrollo del proyecto y funcionalidad de la aplicación.
+- **Prepocesador SASS**. Para la creación de código CSS estándar.
+- **APIs**. Para las peticiones al servidor.
 
-## Prop-types
-1. Instalar prop-types:
-~~~
-$ npm install prop-types
-~~~
-2. Importarlas en los componentes en las que se quiera usar:
-~~~
-import PropTypes from "prop-types";
-~~~
-3. Usarla en el código, antes del *export default componente*:
-~~~
-NombreComponente.propTypes = {
-  nombrePropDeTipoStringOpcional: PropTypes.string,
-  nombrePropDeTipoStringObligatoria: PropTypes.string.isRequired,
-};
-~~~
-**Nota** Tipos de Prop.Types: array, bool, func, number, object, string, symbol, any(cualquiera)
+## REQUISITOS
 
-## Publicar en GitHub Pages
+### Diseño
+Para la ejecución del diseño se ha usado:
+- Sass.
+- Flexbox y CSS Grid.
+- Media queries: mobil(320px), tablet(768px) y desktop (1280px).
+
+### Maquetación
+La maquetación cumple los siguientes requisitos:
+
+### Interacción
+El proyecto cumple con las siguientes interacciones:
+- **Listado de personajes**: Cada personaje ha de mostrar su foto, nombre y especie.
+- **Imágenes**: En caso de que un personaje no tenga foto se ha de mostrar una de relleno.
+- **Filtros**:
+Filtrado de personajes: Se puede realizar una búsqueda por nombre del personaje. Se utiliza un **input** para este filtro.
+Filtrado por casa: Se puede realizar una búsqueda por la casa a la que pertenecen los personajes. Se utiliza un **select** para este filtro. Por defecto aparece la casa *Gryffindor*. 
+(Bonus)Filtrado por género: Se puede realizar una búsqueda por el género del personaje. Se utiliza un **select** para este filtro. Por defecto aparece *Selecciona*. 
+- **Componentes del listado de personajes**: El proyecto cuenta con:
+Componente para el filtrado:
+  - Componente para el filtrado por nombre.
+  - Componente para el filtrado por casa.
+  - Componente para el filtrado por género.
+Componente para el listado.
+Componente para la tarjeta de cada personaje del listado.
+Componente para el detalle de cada personaje.
+- **Detalle de personajes**: La información sobre un personaje aparece a pantalla completa cuando se hace click sobre él. Los datos mostrados son la foto y el nombre del personaje, casa a la que pertenece, si esta vivo o muerto, su género y su especie, y sus nombres alternativos. En el link *Volver* se vuelve a la página de inicio. Se usan rutas y React Router DOM.
+
+> **NOTA:** 
+- La lista de personajes se muestra por orden alfabético.
+- El filtrado acepta el nombre tanto en mayúsculas como en minúsculas. Y si se busca un nombre que no coincide con los personajes se muestra un mensaje.
+- Al mostrar la casa aparece el emblema respectivo y si un personaje está vivo o muerto aparece el icono respectivo.
+- En caso de que la URL sea inexistente se muestra un mensaje.
+- Con el botón *Reset* los valores de filtrado se reinician.
+
+## INSTALACIÓN
+Dentro de nuestro archivo de trabajo abrir una terminal BASH y clonar el repositorio de github.
+Comprobar que estamos en la ruta del directorio adecuada. Posteriormente instalar las dependencias "node_modules" para la ejecución de Vite y la biblioteca React, e iniciar el proyecto. 
+
+Clonar repositorio:
+
+$ git clone https://example.com
+
+Ruta directorio:
+
+$ cd ../path/to/the/file
+
+Instalación dependencias:
+
+$ npm install
+
+Iniciar proyecto:
+
+$ npm run dev
+
+## PUBLICACIÓN 
+Para la publicación del proyecto en GitHub Pages, seguir los siguientes pasos:
 1. Instalar el módulo gh-pages:
 ~~~
 $ npm i gh-pages -D
 ~~~
-2. Ir al fichero de configuración de vite *vite.config.js* y en *export default defineConfig* añadir como propiedad al final **base : "/nombre-del-repositorio/"**, quedando algo como:
+2. En el fichero de configuración de vite *vite.config.js* añadir la propiedad **base : "/nombre-del-repositorio/"**:
 ~~~
 export default defineConfig({
   plugins: [react()],
   base: "/nombre-repo/",
 });
 ~~~
-3. Añadir al *package.json* la línea **"deploy": "gh-pages -d dist"** dentro de las llaves de tus *scripts*, quedando algo como:
+3. Añadir al *package.json* la línea **"deploy": "gh-pages -d dist"** en *scripts*:
 ~~~
 "scripts": {
   "dev": "vite",
@@ -46,32 +89,12 @@ export default defineConfig({
   "deploy": "gh-pages -d dist"
 }
 ~~~
-4. Ejecutar **npm run build**, que genera la carpeta *dist* en la raíz del proyecto con los ficheros optimizados.
+4. Ejecutar **npm run build**:
 ~~~
 $ npm run build
 ~~~
-5. Ejecutar **npm run deploy**, que genera la rama gh-pages en el repositorio. Con los ficheros optimizados para ser publicados.
+5. Ejecutar **npm run deploy**:
 ~~~
 $  npm run deploy
 ~~~
-6. Ir al repositorio en GitHub y configura GitHub Pages:
-- Entrar en las **Settings**.
-- Entrar en **Pages**, en el menú de la izquierda.
-- Eligir la rama de la repo: **gh-pages**.
-- Elige la carpeta **/root**.
-- Publicar la url en **About**.
-**Nota** al entrar en *pages* tanto la rama como la carpeta suelen estar ya por defecto y por eso no da la opción de guardar. Solo hay que esperar y refrescar la página para que aparezca la url.
-**Nota 2** la configuración de *gh-pages* no se sube a GitHub, si es un trabajo colaborativo cada colaboradora tendrá que hacer un *npm i* o *npm i gh-pages -D*.
-
-## Intalación de React Router DOM
-1. Para gestionar las rutas de una web de React lo primero que tenemos que hacer es instalarlo en el proyecto:
-~~~
-$ npm install react-router-dom
-~~~
-2. Añadir *homepage* al package.json:
-En las primeras líneas de package.json añadir debajo de "name" : "nombre-x", -> **"homepage": "./",**
-3. Configurar React Router DOM en el proyecto:
-En *main.jsx* importar el HashRouter -> **import { HashRouter } from "react-router-dom"**. Esto indica que vamos a usar las rutas con Browser.
-En *.render* dentro de main.jsx escribir -> **<HashRouter> <App /> </HashRouter>**. Esto indica que el componente HashRouter es ahora la madre de App y que todos los componentes hijos o nietos de APP podrán trabajar con rutas.
-
-**Nota** Cuando se tenga acceso a la configuración del servidor y se pueda usar el sistema moderno de rutas se cambiará la palabra *{HashRouter}* por **{BrowserRouter}** tanto en import como en el return.
+6. A continuación subimos al repositorio la carpeta *dist* que se acaba de generar. En la pestaña `settings` del repositorio ir al apartado de GitHub Pages y activar la opción **main branch /root folder**. Publicar la url generada en **About**.
